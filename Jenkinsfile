@@ -11,10 +11,13 @@ pipeline {
         }
         stage('Front-end') {
             agent {
-                docker { image 'nuimk/tn-jenkins-docker-agent' }
+                docker {
+                    image 'nuimk/tn-jenkins-docker-agent'
+                    args '-v $HOME/.kube:/root/.kube -e KUBECONFIG=/root/.kube/config'
+                }
             }
             steps {
-                sh 'pwd && echo "HOME $HOME"'
+                sh 'kubectl get pod'
             }
         }
     }
