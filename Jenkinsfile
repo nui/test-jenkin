@@ -14,7 +14,7 @@ pipeline {
                 docker { image 'nuimk/tn-jenkins-docker-agent' }
             }
             steps {
-                sh 'whoami && pwd && echo "HOME $HOME"'
+                sh 'pwd && echo "HOME $HOME"'
             }
         }
     }
