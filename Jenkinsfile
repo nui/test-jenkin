@@ -13,7 +13,8 @@ pipeline {
             agent {
                 docker {
                     image 'nuimk/tn-jenkins-docker-agent'
-                    args '-v $HOME/.kube:/root/.kube -e KUBECONFIG=/root/.kube/config --pull'
+                    args '-v $HOME/.kube:/root/.kube -e KUBECONFIG=/root/.kube/config'
+                    alwaysPull true
                 }
             }
             steps {
