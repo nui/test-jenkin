@@ -1,10 +1,20 @@
 pipeline {
-    agent { docker { image 'node:6.3' } }
+    agent none
     stages {
-        stage('build') {
+        stage('Back-end') {
+            agent {
+                docker { image 'node:8-alpine' }
+            }
             steps {
-                sh 'npm --version'
-                kubectl get pod
+                sh 'node --version'
+            }
+        }
+        stage('Front-end') {
+            agent {
+                docker { image 'nuimk/tn-jenkins-docker-agent' }
+            }
+            steps {
+                sh 'cat /etc/os-release'
             }
         }
     }
