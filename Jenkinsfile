@@ -14,7 +14,7 @@ pipeline {
                 docker { image 'nuimk/tn-jenkins-docker-agent' }
             }
             steps {
-                sh 'cat /etc/os-release'
+                sh 'mount && pwd'
             }
         }
     }
