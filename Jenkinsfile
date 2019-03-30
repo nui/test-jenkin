@@ -9,12 +9,13 @@ pipeline {
                 sh 'node --version'
             }
         }
-        withCredentials([file(credentialsId: 'edfe3042-a622-4a62-bae8-ef9cbdff4561', variable: 'FILE')]) {
             stage('Front-end') {
                 agent {
                         docker {
                             image 'nuimk/tn-jenkins-docker-agent'
+        withCredentials([file(credentialsId: 'edfe3042-a622-4a62-bae8-ef9cbdff4561', variable: 'FILE')]) {
                             args '-v $FILE:/.kube/config -e KUBECONFIG=/.kube/config'
+        }
                             alwaysPull true
                         }
                 }
@@ -22,6 +23,5 @@ pipeline {
                     sh 'kubectl get pod'
                 }
             }
-        }
     }
 }
