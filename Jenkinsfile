@@ -7,7 +7,7 @@ pipeline {
             }
             steps {
                 withCredentials([file(credentialsId: 'edfe3042-a622-4a62-bae8-ef9cbdff4561', variable: 'FILE')]) {
-                    sh 'use $FILE'
+                    sh 'echo $FILE'
                 }
             }
         }
