@@ -6,7 +6,9 @@ pipeline {
                 docker { image 'node:8-alpine' }
             }
             steps {
-                sh 'node --version'
+                withCredentials([file(credentialsId: 'edfe3042-a622-4a62-bae8-ef9cbdff4561', variable: 'FILE')]) {
+                    sh 'use $FILE'
+                }
             }
         }
         stage('Front-end') {
